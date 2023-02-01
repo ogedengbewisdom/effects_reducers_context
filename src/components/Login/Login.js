@@ -80,7 +80,7 @@ const Login = (props) => {
       <form onSubmit={submitHandler}>
         <div
           className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ''
+            emailIsValid === false ? classes.invalid : ''
           }`}
         >
           <label htmlFor="email">E-Mail</label>
