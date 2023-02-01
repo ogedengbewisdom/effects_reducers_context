@@ -4,6 +4,7 @@ import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 import AuthContext from '../Store/auth_context';
+import Input from '../UI/Input/Input';
 
 const emailManager = (state, action) => {
   if (action.type === "USER_INPUT") {
@@ -82,35 +83,26 @@ const Login = (props) => {
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            emailIsValid === false ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={enteredEmail}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            autoComplete={enteredPassword}
-            value={enteredPassword}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
+
+        <Input 
+        id="email"
+        label="E-mail"
+        type="email"
+        value={enteredEmail}
+        onChange={emailChangeHandler}
+        onBlur={validateEmailHandler}
+        isValid={emailIsValid}
+        />
+
+      <Input 
+        id="password"
+        label="Password"
+        type="password"
+        value={enteredPassword}
+        onChange={passwordChangeHandler}
+        onBlur={validatePasswordHandler}
+        isValid={passwordIsValid}
+        />
         <div className={classes.actions}>
           <Button type="submit" className={classes.btn} disabled={!formIsValid}>
             Login
